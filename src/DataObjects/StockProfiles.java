@@ -18,12 +18,9 @@ public class StockProfiles {
         return stockProfiles;
     }
 
-    public StockProfile removeStock(StockProfile stock){
-        if(stockProfiles.remove(stock)){
-            return stock;
-        } else{
-            return null;
-        }
+    public List<StockProfile> removeStock(StockProfile stock){
+        stockProfiles.remove(stock);
+        return stockProfiles;
     }
 
 
