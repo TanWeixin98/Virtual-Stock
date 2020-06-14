@@ -18,5 +18,13 @@ public class StockProfiles {
         return stockProfiles;
     }
 
+    public StockProfile removeStock(StockProfile stock){
+        if(stockProfiles.remove(stock)){
+            return stock;
+        } else{
+            return null;
+        }
+    }
+
 
 }
