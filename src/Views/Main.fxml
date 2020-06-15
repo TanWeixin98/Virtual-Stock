@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+   <left>
+      <VBox prefHeight="768.0" prefWidth="243.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="90.0" prefWidth="286.0" text="Virtual Stock">
+               <font>
+                  <Font name="Georgia Bold" size="27.0" />
+               </font>
+            </Label>
+            <Button blendMode="HARD_LIGHT" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" text="Dashboard">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button blendMode="HARD_LIGHT" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" text="Search">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button blendMode="HARD_LIGHT" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" text="History">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button blendMode="HARD_LIGHT" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" text="Settings">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
