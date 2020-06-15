@@ -39,7 +39,9 @@ public class UserProfile {
 
     public void setUsername(String username) {this.username = username;}
 
-    public void addStockOwned(StockProfile stock, Integer numberOfShares){
-        stocksOwned.put(stock.getStockCode(), numberOfShares);
-    }
+    //can be use for update and add stock own by use
+    public void setStockShares(StockProfile stock, Integer numberOfShares){stocksOwned.put(stock.getStockCode(), numberOfShares);}
+
+    @SuppressWarnings("SuspiciousMethodCalls")
+    public void removeStock(StockProfile stock){stocksOwned.remove(stock);}
 }

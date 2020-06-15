@@ -3,6 +3,7 @@ package DataObjects;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO: Need to implement comparator for sorting and stock comparison
 public class StockProfile {
 
     private String stockCode, companyName, description;
@@ -41,6 +42,11 @@ public class StockProfile {
         else if(currPrice > highestPrice) { highestPrice = currPrice;}
     }
 
-    public void addTag(String tag) { tags.add(tag);}
+    public StockProfile addTag(String tag) {
+        tags.add(tag);
+        return this;
+    }
+
+    public boolean containsTag(String tag){return tags.contains(tag);}
 
 }
