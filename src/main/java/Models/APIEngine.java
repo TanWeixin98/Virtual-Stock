@@ -23,7 +23,7 @@ public class APIEngine {
         }
     };
 
-    public JSONArray GetRequestObjects(String url, String endpoint, String APIKey, String params){
+    private String GetRequest(String url, String endpoint, String APIKey, String params){
         try {
             CloseableHttpClient httpClient = HttpClients.createMinimal();
 
@@ -33,69 +33,48 @@ public class APIEngine {
             String responseBody = httpClient.execute(httpGet, responseHandler);
             httpClient.close();
 
-            return new JSONArray(responseBody);
+            return responseBody;
         }catch (Exception e){
             return null;
         }
+    }
+    private String PostRequest(String url, String endpoint, String APIKey, String params){try {
+        CloseableHttpClient httpClient = HttpClients.createMinimal();
 
+        HttpPost httpPost = new HttpPost(url + endpoint);
+        httpPost.setHeader("Accept", "application/json");
+        httpPost.setHeader("Content-type", "application/json");
+        httpPost.setHeader("Authorization", APIKey);
+
+        StringEntity stringEntity = new StringEntity(params);
+        httpPost.setEntity(stringEntity);
+
+        String responseBody = httpClient.execute(httpPost, responseHandler);
+        httpClient.close();
+
+        return responseBody;
+    }catch (Exception e){
+        return null;
+    }}
+
+    public JSONArray GetRequestObjects(String url, String endpoint, String APIKey, String params){
+        String response = GetRequest(url, endpoint,APIKey,params);
+        return (response == null) ? null : new JSONArray(response);
     }
 
     public JSONObject GetRequestObject(String url, String endpoint, String APIKey, String params){
-        try {
-            CloseableHttpClient httpClient = HttpClients.createMinimal();
-
-            HttpGet httpGet = new HttpGet(url + endpoint + params);
-            httpGet.setHeader("Authorization", APIKey);
-
-            String responseBody = httpClient.execute(httpGet, responseHandler);
-            httpClient.close();
-
-            return new JSONObject(responseBody);
-        }catch (Exception e){
-            return null;
-        }
+        String response = GetRequest(url, endpoint,APIKey,params);
+        return (response == null) ? null : new JSONObject(response);
     }
 
     public JSONObject PostRequestObject(String url, String endpoint, String APIKey, String params){
-        try {
-            CloseableHttpClient httpClient = HttpClients.createMinimal();
-
-            HttpPost httpPost = new HttpPost(url + endpoint);
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
-            httpPost.setHeader("Authorization", APIKey);
-
-            StringEntity stringEntity = new StringEntity(params);
-            httpPost.setEntity(stringEntity);
-
-            String responseBody = httpClient.execute(httpPost, responseHandler);
-            httpClient.close();
-
-            return new JSONObject(responseBody);
-        }catch (Exception e){
-            return null;
-        }
+        String response = PostRequest(url, endpoint,APIKey,params);
+        return (response == null) ? null : new JSONObject(response);
     }
 
 
     public JSONArray PostRequestObjects(String url, String endpoint, String APIKey, String params){
-        try {
-            CloseableHttpClient httpClient = HttpClients.createMinimal();
-
-            HttpPost httpPost = new HttpPost(url + endpoint);
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
-            httpPost.setHeader("Authorization", APIKey);
-
-            StringEntity stringEntity = new StringEntity(params);
-            httpPost.setEntity(stringEntity);
-
-            String responseBody = httpClient.execute(httpPost, responseHandler);
-            httpClient.close();
-
-            return new JSONArray(responseBody);
-        }catch (Exception e){
-            return null;
-        }
+        String response = PostRequest(url, endpoint,APIKey,params);
+        return (response == null) ? null : new JSONArray(response);
     }
 }
