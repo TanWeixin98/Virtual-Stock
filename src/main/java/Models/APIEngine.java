@@ -10,10 +10,30 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.util.concurrent.Callable;
 
-public class APIEngine {
+public class APIEngine<T> implements Callable<T>{
+    private final String url, APIKey, parameters;
+    private final int APIMethod, returnType;
 
-    ResponseHandler<String> responseHandler = response -> {
+    public APIEngine(String url, String APIKey, String parameters, int APIMethod, int returnType) {
+        this.url = url;
+        this.APIKey = APIKey;
+        this.parameters = parameters;
+        this.APIMethod = APIMethod;
+        this.returnType = returnType;
+    }
+
+
+    @Override
+    public T call() throws Exception {
+        if(APIMethod == 0)
+            return (returnType==0)? (T) GetRequestObject() : (T)GetRequestObjects();
+        else
+            return (returnType == 0) ? (T) PostRequestObject() : (T) PostRequestObjects();
+    }
+
+    private ResponseHandler<String> responseHandler = response -> {
         int status = response.getStatusLine().getStatusCode();
         if(status >= 200 && status <= 300) {
             HttpEntity entity = response.getEntity();
@@ -23,11 +43,11 @@ public class APIEngine {
         }
     };
 
-    private String GetRequest(String url, String endpoint, String APIKey, String params){
+    private String GetRequest(){
         try {
             CloseableHttpClient httpClient = HttpClients.createMinimal();
 
-            HttpGet httpGet = new HttpGet(url + endpoint + params);
+            HttpGet httpGet = new HttpGet(url + parameters);
             httpGet.setHeader("Authorization", APIKey);
 
             String responseBody = httpClient.execute(httpGet, responseHandler);
@@ -38,15 +58,16 @@ public class APIEngine {
             return null;
         }
     }
-    private String PostRequest(String url, String endpoint, String APIKey, String params){try {
+    private String PostRequest(){
+        try {
         CloseableHttpClient httpClient = HttpClients.createMinimal();
 
-        HttpPost httpPost = new HttpPost(url + endpoint);
+        HttpPost httpPost = new HttpPost(url );
         httpPost.setHeader("Accept", "application/json");
         httpPost.setHeader("Content-type", "application/json");
         httpPost.setHeader("Authorization", APIKey);
 
-        StringEntity stringEntity = new StringEntity(params);
+        StringEntity stringEntity = new StringEntity(parameters);
         httpPost.setEntity(stringEntity);
 
         String responseBody = httpClient.execute(httpPost, responseHandler);
@@ -57,24 +78,24 @@ public class APIEngine {
         return null;
     }}
 
-    public JSONArray GetRequestObjects(String url, String endpoint, String APIKey, String params){
-        String response = GetRequest(url, endpoint,APIKey,params);
+    private JSONArray GetRequestObjects(){
+        String response = GetRequest();
         return (response == null) ? null : new JSONArray(response);
     }
 
-    public JSONObject GetRequestObject(String url, String endpoint, String APIKey, String params){
-        String response = GetRequest(url, endpoint,APIKey,params);
+    private JSONObject GetRequestObject(){
+        String response = GetRequest();
         return (response == null) ? null : new JSONObject(response);
     }
 
-    public JSONObject PostRequestObject(String url, String endpoint, String APIKey, String params){
-        String response = PostRequest(url, endpoint,APIKey,params);
+    private JSONObject PostRequestObject(){
+        String response = PostRequest();
         return (response == null) ? null : new JSONObject(response);
     }
 
 
-    public JSONArray PostRequestObjects(String url, String endpoint, String APIKey, String params){
-        String response = PostRequest(url, endpoint,APIKey,params);
+    private JSONArray PostRequestObjects(){
+        String response = PostRequest();
         return (response == null) ? null : new JSONArray(response);
     }
 }
