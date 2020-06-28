@@ -12,7 +12,7 @@ public class ApplicationLauncher extends Application{
     private static void ViewInitialization(Stage primaryStage){
         MainView mainView = new MainView();
         Scene root = mainView.getMainView();
-        primaryStage.setScene(root, 1024, 524);
+        primaryStage.setScene(root);
         primaryStage.setTitle("Virtual Stock");
         primaryStage.show();
     }
