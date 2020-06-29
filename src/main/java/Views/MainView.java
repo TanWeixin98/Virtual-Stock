@@ -1,23 +1,38 @@
-package main.java.Views;
+package Views;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainView extends Application {
-    public static final double WIDTH = 1024;
-    public static final double HEIGHT = 768;
+public class MainView{
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
-        stage.setTitle("Virtual Stock");
-        stage.setScene(scene);
-        stage.show();
+    private Scene mainViewScene;
+
+    public MainView(){
+        OnInitialize();
+    }
+
+    private void OnInitialize(){
+        try {
+            ViewInitialization();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            //TODO: handle exception
+        }
+        //component initialisation
+        //component binding
+    }
+
+
+    private void ViewInitialization() throws Exception{
+        Parent mainView = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        mainViewScene= new Scene(mainView ,ViewConfigurations.MAIN_VIEW_WIDTH, ViewConfigurations.MAIN_VIEW_HEIGHT);
+    }
+
+
+    public Scene getMainView() {
+        return mainViewScene;
     }
 }
 
