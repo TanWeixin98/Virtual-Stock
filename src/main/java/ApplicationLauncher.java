@@ -1,4 +1,5 @@
 import Views.MainView;
+import Views.ViewConfigurations;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -13,7 +14,7 @@ public class ApplicationLauncher extends Application{
         MainView mainView = new MainView();
         Scene root = mainView.getMainView();
         primaryStage.setScene(root);
-        primaryStage.setTitle("Virtual Stock");
+        primaryStage.setTitle(ViewConfigurations.APPLICATION_TITLE);
         primaryStage.show();
     }
 }
