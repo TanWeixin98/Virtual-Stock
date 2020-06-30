@@ -3,10 +3,11 @@ package Views;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.net.URL;
 
 public class MainView{
 
+    private static final String resourceFileName = "Views/Main.fxml";
     private Scene mainViewScene;
 
     public MainView(){
@@ -17,7 +18,6 @@ public class MainView{
         try {
             ViewInitialization();
         }catch (Exception e){
-            System.out.println(e.getMessage());
             //TODO: handle exception
         }
         //component initialisation
@@ -26,10 +26,13 @@ public class MainView{
 
 
     private void ViewInitialization() throws Exception{
-        Parent mainView = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        URL resourceLocation = getClass().getClassLoader().getResource(resourceFileName);
+        if(resourceLocation == null)
+            //TODO: create new exception for ViewInitaliztion
+            throw new Exception();
+        Parent mainView = FXMLLoader.load(resourceLocation);
         mainViewScene= new Scene(mainView ,ViewConfigurations.MAIN_VIEW_WIDTH, ViewConfigurations.MAIN_VIEW_HEIGHT);
     }
-
 
     public Scene getMainView() {
         return mainViewScene;
