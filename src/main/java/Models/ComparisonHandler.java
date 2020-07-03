@@ -1,4 +1,4 @@
-package main.java.Models;
+package Models;
 
 import DataObjects.StockProfile;
 
@@ -19,7 +19,7 @@ public class ComparisonHandler {
         }
     }
 
-    class SSortByCurrentPrice implements Comparator<DataObjects.StockProfile>{
+    class SortByCurrentPrice implements Comparator<DataObjects.StockProfile>{
         @Override
         public int compare(StockProfile stock1, StockProfile stock2) {
             return (int)(stock1.getCurrPrice() - stock2.getCurrPrice());
