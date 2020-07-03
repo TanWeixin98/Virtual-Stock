@@ -1,8 +1,11 @@
 package Models;
+<<<<<<< HEAD
 
 import DataObjects.StockProfile;
 
 import java.util.Comparator;
+=======
+>>>>>>> Fixed Typo
 
 import DataObjects.StockProfile;
 
@@ -22,7 +25,8 @@ public class ComparisonHandler {
             return stock1.getStockCode().compareTo(stock2.getStockCode());
         }
     }
-    
+
+
     class SortByCurrentPrice implements Comparator<DataObjects.StockProfile>{
         @Override
         public int compare(StockProfile stock1, StockProfile stock2) {
