@@ -11,6 +11,7 @@ public class ComparisonHandler {
             return stock1.getCompanyName().compareTo(stock2.getCompanyName());
         }
     }
+
     static class SortByStockCode implements Comparator<DataObjects.StockProfile>{
         @Override
         public int compare(StockProfile stock1, StockProfile stock2) {
