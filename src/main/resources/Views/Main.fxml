@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD:src/main/resources/Views/Main.fxml
 <?import com.jfoenix.controls.*?>
+=======
+<!--<?import com.jfoenix.controls.*?>-->
+<?import java.lang.*?>
+>>>>>>> 97f438eee0c16ad528fa3b253a6411dd929d5060:src/main/java/Views/Main.fxml
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -14,6 +19,7 @@
                   <Font name="Georgia Bold" size="27.0" />
                </font>
             </Label>
+<<<<<<< HEAD:src/main/resources/Views/Main.fxml
             <JFXButton prefHeight="90" prefWidth="286.0" text="Search">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -29,6 +35,23 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
+=======
+<!--            <JFXButton prefHeight="90" prefWidth="286.0" text="Search">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="18.0" />-->
+<!--               </font>-->
+<!--            </JFXButton>-->
+<!--            <JFXButton prefHeight="90" prefWidth="286.0" text="History">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="18.0" />-->
+<!--               </font>-->
+<!--            </JFXButton>-->
+<!--            <JFXButton prefHeight="90" prefWidth="286.0" text="Settings">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="18.0" />-->
+<!--               </font>-->
+<!--            </JFXButton>-->
+>>>>>>> 97f438eee0c16ad528fa3b253a6411dd929d5060:src/main/java/Views/Main.fxml
          </children>
       </VBox>
    </left>
