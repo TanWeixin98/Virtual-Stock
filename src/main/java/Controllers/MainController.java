@@ -10,7 +10,7 @@ public class MainController{
         switch (className){
             case "MainView":
                 System.out.println("MainView");
-                break;
+                return main.java.Controllers.MainViewController.generateHandler(event, data);
             case "MarketView":
                 System.out.println("MarketView");
                 return main.java.Controllers.MarketViewController.generateHandler(event, data);
@@ -22,21 +22,21 @@ public class MainController{
                 return main.java.Controllers.StockComparisonController.generateHandler(event, data);
             case "StockProfileView":
                 System.out.println("StockProfileView");
-                break;
+                return main.java.Controllers.StockProfileViewController.generateHandler(event, data);
             case "TimelineView":
                 System.out.println("TimelineView");
-                break;
+                return main.java.Controllers.TimelineViewController.generateHandler(event, data);
             case "UserProfileView":
                 System.out.println("UserProfileView");
                 return main.java.Controllers.UserProfileController.generateHandler(event, data);
             default:
                 System.out.println("Invalid Class");
+                return new EventHandler() {
+                    @Override
+                    public void handle(Event event) {
+                    }
+                };
         }
-        return new EventHandler() {
-            @Override
-            public void handle(Event event) {
-            }
-        };
     }
 
 }
