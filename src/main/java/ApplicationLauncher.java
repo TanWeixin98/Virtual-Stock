@@ -1,5 +1,7 @@
 import Views.MainView;
 import Views.ViewConfigurations;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -17,7 +19,8 @@ public class ApplicationLauncher extends Application{
 
     private static void ViewInitialization(Stage primaryStage){
         MainView mainView = new MainView();
-        Scene root = mainView.getMainView();
+        Parent mainViewNode = mainView.getMainView();
+        Scene root = new Scene(mainViewNode,ViewConfigurations.MAIN_VIEW_WIDTH, ViewConfigurations.MAIN_VIEW_HEIGHT);
         primaryStage.setScene(root);
         primaryStage.setTitle(ViewConfigurations.APPLICATION_TITLE);
         primaryStage.show();
