@@ -4,14 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import java.net.URL;
 
-public class UserProfileView {
+public class UserProfileView{
     private static final String resourceName = "Views/UserProfile.fxml";
-    private Node userProfileNode;
+    private Node userProfileViewNode;
 
-    public UserProfileView(){onInitalize(); }
+    UserProfileView(){onInitalize(); }
 
     public Node getUserProfileView(){
-        return userProfileNode;
+        return userProfileViewNode;
     }
 
     private void onInitalize(){
@@ -27,6 +27,6 @@ public class UserProfileView {
         if (resourceLocation == null)
             //TODO: create new exception for ViewInitaliztion
             throw new Exception();
-        userProfileNode = FXMLLoader.load(resourceLocation);
+        userProfileViewNode = FXMLLoader.load(resourceLocation);
     }
 }
