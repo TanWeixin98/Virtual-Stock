@@ -23,7 +23,7 @@ public class ComparisonHandler {
         }
     }
 
-    
+
     static class SortByCurrentPrice implements Comparator<DataObjects.StockProfile>{
         @Override
         public int compare(StockProfile stock1, StockProfile stock2) {
