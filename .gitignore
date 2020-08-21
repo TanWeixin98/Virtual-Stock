@@ -4,3 +4,6 @@ out/*
 
 target/*
 Virtual-Stock.iml
+
+
+src/main/java/Models/Credential.java

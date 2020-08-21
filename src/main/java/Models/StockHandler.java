@@ -1,7 +1,10 @@
 package Models;
 
 import Configurations.APIConfigurations;
+import DataObjects.StockProfile;
+import DataObjects.StockProfiles;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -26,6 +29,14 @@ public class StockHandler {
         try
         {
             JSONArray stockSymbolListJsonArray = res.get();
+            StockProfiles stockMarketList = new StockProfiles();
+
+            for (Object stockObj : stockSymbolListJsonArray) {
+                JSONObject stockJsonObj = (JSONObject) stockObj;
+                String stockCode = (String) stockJsonObj.get("symbol");
+                String companyName = (String) stockJsonObj.get("description");
+                stockMarketList.addStock(new StockProfile(stockCode, companyName));
+            }
             System.out.println(stockSymbolListJsonArray);
         }
         catch (ExecutionException | InterruptedException error)

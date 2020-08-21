@@ -10,6 +10,11 @@ public class StockProfile {
     private double currPrice, highestPrice, lowestPrice;
     private List<String> tags;
 
+    public StockProfile(String stockCode, String companyName){
+        this.stockCode = stockCode;
+        this.companyName = companyName;
+    }
+
     public StockProfile(String stockCode, String companyName, String description,
                         double currPrice,double highestPrice, double lowestPrice){
         this.stockCode = stockCode;
