@@ -26,6 +26,11 @@ public class HTTPRequest<T> implements Callable<T>{
     }
 
 
+    /**
+     * API method: 0 = GET ; 1 = POST
+     * return type: 0 = josn object ;  1 = json array
+     * TODO use enum to represent API method and return type
+     * **/
     @Override
     @SuppressWarnings("unchecked cast")
     public T call() throws Exception {
